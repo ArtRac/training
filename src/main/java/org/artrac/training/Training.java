@@ -8,7 +8,7 @@ public class Training {
 
     public static void main(String[] args){
         System.out.println("testowa liczba pierwsza:");
-        System.out.println(isPrime(3637));
+        System.out.println(isPrime(7));
 
         System.out.println("dziesiec kolejnych liczb pierwszych");
 
@@ -16,23 +16,19 @@ public class Training {
             if (isPrime(number)){
                 System.out.println(number);
                 i++;
-                number++;
-            } else {
-                number++;
             }
+            number++;
         }
 
     }
 
     static boolean isPrime(int number) {
         for(int i = 1; i <= number; i++){
-            int tempNumber;
-            tempNumber = number / i;
             if (number % i == 0 && i != number && i != 1){
                 return false;
             } else if(number == 1) {
                 return false;
-            } else if (i == number && tempNumber == 1){
+            } else if (i == number && number / i == 1){
                 return true;
             }
         }
