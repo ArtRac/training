@@ -2,34 +2,23 @@ package org.artrac.training;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class TrainingTest {
 
     @ParameterizedTest
-    @ValueSource(doubles = {1 , 1.5})
-    void isPositiveTest(double number){
-        boolean result = Training.isPositive(number);
-        Assertions.assertTrue(result);
+    @CsvSource({"543, 1234"})
+    void twoElementsTest(int x, int y){
+        int result = Training.twoElements(x, y);
+        Assertions.assertEquals(result, x+y);
     }
 
     @ParameterizedTest
-    @ValueSource(doubles = {-1, -0.5, 0})
-    void isFalseTest(double number){
-        boolean result = Training.isPositive(number);
-        Assertions.assertFalse(result);
+    @CsvSource({"5, 3, 10, 10"})
+    void biggestNumberTest(int x, int y, int z){
+        int result = Training.biggestNumber(x, y, z);
+        Assertions.assertSame(result, 10);
     }
 
-    @ValueSource(ints = {-1, 0, 1, 50000001})
-    void isPrimeFalseTest(int number){
-        boolean result = Training.isPrime(number);
-        Assertions.assertFalse(result);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {11})
-    void isPrimeTrueTest(int number){
-        boolean result = Training.isPrime(number);
-        Assertions.assertTrue(result);
-    }
 }
